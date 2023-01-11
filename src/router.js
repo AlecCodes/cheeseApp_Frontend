@@ -2,18 +2,18 @@ import { createBrowserRouter,createRoutesFromElements, Route } from "react-route
 import App from './App'
 import Index from './pages/Index'
 import Show from './pages/Show'
-import cheesesLoader from './loaders'
-import createAction from "./actions";
+import {cheesesLoader, cheeseLoader} from './loaders'
+import {createAction, deleteAction, updateAction} from "./actions";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
     <Route path="/" element={<App/>}>
         <Route path="" element={<Index />} loader={cheesesLoader}/>
-        <Route path=":id" element={<Show/>}/>
+        <Route path=":id" element={<Show/>} loader={cheeseLoader}/>
         //action attribute of our form component "points" to this resource
         <Route path="create" action = {createAction}/>
-        <Route path="update/:id"/>
-        <Route path="delete/:id"/>
+        <Route path="update/:id" action={updateAction}/>
+        <Route path="delete/:id" action = {deleteAction}/>
     </Route>
     )
 )

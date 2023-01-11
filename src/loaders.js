@@ -1,10 +1,14 @@
 const URL = "https://cheeseapp-api.onrender.com/"
 
-const cheesesLoader = async() => {
+export const cheesesLoader = async() => {
     const response = await fetch(URL + "cheeses")
     const cheeses = await response.json()
     return cheeses
-    console.log(cheeses)
 }
 
-export default cheesesLoader
+
+export const cheeseLoader = async({params}) => {
+    const response = await fetch(URL + "cheeses/" + `${params.id}`)
+    const cheese = await response.json()
+    return cheese
+} 
