@@ -4,7 +4,9 @@ function Show(props){
     const cheese = useLoaderData();
     return <div>
         <h1>{cheese.name}</h1>
-        <img src={cheese.image} alt={cheese.image}/>
+        <div className = "imgContainer">
+            <img src={cheese.image} alt={cheese.image}/>
+        </div>
         <h2>{cheese.country}</h2>
         <Form action = {`/update/${cheese._id}`} method="post">
             <input type = 'input' name='name' placeholder='cheese name'/>
